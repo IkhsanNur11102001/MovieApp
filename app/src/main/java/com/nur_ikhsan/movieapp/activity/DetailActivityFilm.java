@@ -3,10 +3,12 @@ package com.nur_ikhsan.movieapp.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,11 +46,11 @@ import java.util.List;
 
 public class DetailActivityFilm extends AppCompatActivity {
     TextView tvRealeseDate, tvDeskripsi, tv_title_movie;
-    ImageView img_movie_cover, imgPhoto;
+    ImageView img_movie_cover;
     RatingBar ratingBar;
     int Id;
     double RatingMovie;
-    String Release, Deskripsi, Title, Cover, Photo, UrlMovie;
+    String Release, Deskripsi, Title, Cover, UrlMovie;
     ModelFilm modelFilm;
     List<ModelTrailer> modelTrailerList = new ArrayList<>();
     AdapterTrailer adapterTrailer;
@@ -79,11 +82,12 @@ public class DetailActivityFilm extends AppCompatActivity {
         tvDeskripsi = findViewById(R.id.tvDeskripsi);
         tvRealeseDate = findViewById(R.id.tvRealeseDate);
         img_movie_cover = findViewById(R.id.img_movie_cover);
-        imgPhoto = findViewById(R.id.imgPhoto);
         ratingBar = findViewById(R.id.ratingBar);
 
         rv_trailer = findViewById(R.id.rv_trailer);
-        rv_trailer.setLayoutManager(new LinearLayoutManager(this));
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(
+                2, LinearLayout.VERTICAL);
+        rv_trailer.setLayoutManager(staggeredGridLayoutManager);
         rv_trailer.setHasFixedSize(true);
 
         helper = new RealmHelper(this);
@@ -96,7 +100,6 @@ public class DetailActivityFilm extends AppCompatActivity {
             Deskripsi = modelFilm.getOverview();
             Title = modelFilm.getTitle();
             Cover = modelFilm.getBackdropPath();
-            Photo = modelFilm.getPosterPath();
             UrlMovie = ApiEndPoint.URLFILM+""+Id;
             RatingMovie = modelFilm.getVoteAverage();
 
@@ -115,10 +118,6 @@ public class DetailActivityFilm extends AppCompatActivity {
             Glide.with(this).load(ApiEndPoint.URLIMAGE+Cover)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(img_movie_cover);
-            Glide.with(this).load(ApiEndPoint.URLIMAGE+Photo)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(imgPhoto);
-
             showTrailer();
 
             btn_share.setOnClickListener(new View.OnClickListener() {
@@ -145,9 +144,8 @@ public class DetailActivityFilm extends AppCompatActivity {
                        Deskripsi = modelFilm.getOverview();
                        Title = modelFilm.getTitle();
                        Cover = modelFilm.getBackdropPath();
-                       Photo = modelFilm.getPosterPath();
                        RatingMovie = modelFilm.getVoteAverage();
-                       helper.addFavoriteMovie(Id, Release, Deskripsi, Title, Cover, Photo, RatingMovie);
+                       helper.addFavoriteMovie(Id, Release, Deskripsi, Title, Cover, RatingMovie);
                        Snackbar.make(buttonView, modelFilm.getTitle() + " Berhasil ditambahkan kefavorit",
                                Snackbar.LENGTH_SHORT).show();
                    }else {

@@ -3,9 +3,11 @@ package com.nur_ikhsan.movieapp.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -41,11 +43,11 @@ import java.util.List;
 
 public class DetailTvActivity extends AppCompatActivity {
     TextView tvRealeseDate, tvDeskripsi, tv_title_movie;
-    ImageView img_movie_cover, imgPhoto;
+    ImageView img_movie_cover;
     RatingBar ratingBar;
     int Id;
     double RatingTV;
-    String Name, Release, Deskripsi, Cover, Photo, UrlMovie;
+    String Name, Release, Deskripsi, Cover, UrlMovie;
     ModelTV modelTV;
     List<ModelTrailer> modelTrailerList = new ArrayList<>();
     AdapterTrailer adapterTrailer;
@@ -75,12 +77,13 @@ public class DetailTvActivity extends AppCompatActivity {
         tv_title_movie = findViewById(R.id.tv_title_movie);
         tvDeskripsi = findViewById(R.id.tvDeskripsi);
         tvRealeseDate  = findViewById(R.id.tvRealeseDate);
-        imgPhoto = findViewById(R.id.imgPhoto);
         img_movie_cover = findViewById(R.id.img_movie_cover);
         ratingBar = findViewById(R.id.ratingBar);
 
         rv_tv = findViewById(R.id.rv_trailerTv);
-        rv_tv.setLayoutManager(new LinearLayoutManager(this));
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(
+                2, StaggeredGridLayoutManager.VERTICAL);
+        rv_tv.setLayoutManager(staggeredGridLayoutManager);
         rv_tv.setHasFixedSize(true);
 
         modelTV = (ModelTV) getIntent().getSerializableExtra("detail");
@@ -91,7 +94,6 @@ public class DetailTvActivity extends AppCompatActivity {
             Release = modelTV.getReleaseDate();
             Deskripsi = modelTV.getOverview();
             Cover = modelTV.getBackdropPath();
-            Photo = modelTV.getPosterPath();
             UrlMovie = ApiEndPoint.URLFILM+""+Id;
             RatingTV = modelTV.getVoteAverage();
 
@@ -102,9 +104,6 @@ public class DetailTvActivity extends AppCompatActivity {
             Glide.with(this).load(ApiEndPoint.URLIMAGE+Cover)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(img_movie_cover);
-            Glide.with(this).load(ApiEndPoint.URLIMAGE+Photo)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(imgPhoto);
 
             float ratingMovie = (float) RatingTV;
             ratingBar.setRating(ratingMovie /2);
@@ -138,8 +137,7 @@ public class DetailTvActivity extends AppCompatActivity {
                         Release = modelTV.getReleaseDate();
                         Deskripsi = modelTV.getOverview();
                         Cover = modelTV.getBackdropPath();
-                        Photo = modelTV.getPosterPath();
-                        helper.addFavoritTV(Id, RatingTV, Name, Release, Deskripsi, Cover, Photo);
+                        helper.addFavoritTV(Id, RatingTV, Name, Release, Deskripsi, Cover);
                         Snackbar.make(buttonView, modelTV.getName()+" Berhasil ditambahkan kefavorit", Snackbar.LENGTH_SHORT).show();
                     }else {
                         helper.deletTVfavorit(modelTV.getId());

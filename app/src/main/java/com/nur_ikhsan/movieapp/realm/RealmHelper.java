@@ -20,6 +20,7 @@ public class RealmHelper {
         this.mContext = context;
         Realm.init(context);
         realm = Realm.getDefaultInstance();
+
     }
 
     public ArrayList<ModelTV> shwoFavoritTVhsow(){
@@ -35,8 +36,6 @@ public class RealmHelper {
                 tvshow.setReleaseDate(modelTVS.get(tv).getReleaseDate());
                 tvshow.setOverview(modelTVS.get(tv).getOverview());
                 tvshow.setBackdropPath(modelTVS.get(tv).getBackdropPath());
-                tvshow.setPosterPath(modelTVS.get(tv).getPosterPath());
-
                 dataTV.add(tvshow);
             }
         }
@@ -44,7 +43,7 @@ public class RealmHelper {
     }
 
 
-    public void addFavoritTV(int Id, double RatingTv, String Name, String Release, String Deskripsi, String Cover, String Photo){
+    public void addFavoritTV(int Id, double RatingTv, String Name, String Release, String Deskripsi, String Cover){
 
         ModelTV modelTV = new ModelTV();
        modelTV.setId(Id);
@@ -53,7 +52,6 @@ public class RealmHelper {
        modelTV.setReleaseDate(Release);
        modelTV.setOverview(Deskripsi);
        modelTV.setBackdropPath(Cover);
-       modelTV.setPosterPath(Photo);
 
         realm.beginTransaction();
         realm.copyToRealm(modelTV);
@@ -76,9 +74,7 @@ public class RealmHelper {
                 movie.setOverview(modelFilm.get(fav).getOverview());
                 movie.setTitle(modelFilm.get(fav).getTitle());
                 movie.setBackdropPath(modelFilm.get(fav).getBackdropPath());
-                movie.setPosterPath(modelFilm.get(fav).getPosterPath());
                 movie.setVoteAverage(modelFilm.get(fav).getVoteAverage());
-
                 dataFavorite.add(movie);
 
             }
@@ -86,7 +82,7 @@ public class RealmHelper {
         return dataFavorite;
     }
 
-    public void addFavoriteMovie(int Id, String Release, String Deskripsi, String Title, String Cover, String Photo, double RatingMovie) {
+    public void addFavoriteMovie(int Id, String Release, String Deskripsi, String Title, String Cover, double RatingMovie) {
         ModelFilm film = new ModelFilm();
 
         film.setId(Id);
@@ -94,7 +90,6 @@ public class RealmHelper {
         film.setOverview(Deskripsi);
         film.setTitle(Title);
         film.setBackdropPath(Cover);
-        film.setPosterPath(Photo);
         film.setVoteAverage(RatingMovie);
 
         realm.beginTransaction();

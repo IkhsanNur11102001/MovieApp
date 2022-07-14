@@ -59,15 +59,7 @@ public class Fragment_tv extends Fragment implements AdapterTV.onSelectdata {
 
         rv_tv = view.findViewById(R.id.rv_tv);
         rv_tv.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        final SwipeRefreshLayout swipeRefreshLayout = view.findViewById(R.id.sweeperReftv);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                getFragmentManager().beginTransaction().replace(R.id.frame_laout, new Fragment_tv()).commit();
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        });
+        
 
         getTv();
         return view;

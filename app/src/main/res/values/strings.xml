@@ -10,4 +10,9 @@
     <string name="setelan_notifikasi">Setelan notifikasi</string>
     <string name="notifkasi">Notifkasi</string>
     <string name="film_favorite">Film favorite</string>
+    <string name="deskripsi">Deskripsi :</string>
+    <string name="title">Title</string>
+    <string name="overview">overview</string>
+    <string name="release">Release</string>
+    <string name="deskripsiiii">Deskripsi</string>
 </resources>
