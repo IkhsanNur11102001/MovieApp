@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/favorite"
+        android:title="@string/film_favorite"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/tvshow"
+        android:title="TV show favorite"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/notif_setting"
+        android:title="@string/notifkasi"
+        app:showAsAction="never"/>
+</menu>

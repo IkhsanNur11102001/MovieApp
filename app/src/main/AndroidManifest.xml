@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.nur_ikhsan.movieapp">
+
+    <uses-permission android:name="android.permission.INTERNET " />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/manscatalog"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/manscatalog"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MovieApp"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".activity.TvshowFavoritActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.FilmfavoritActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SplashscreenActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DetailTvActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DetailActivityFilm"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="false">
+        </activity>
+
+        <receiver
+            android:name=".notifikasi.NotificationReleaseReceiver"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedReceiver" />
+    </application>
+
+</manifest>

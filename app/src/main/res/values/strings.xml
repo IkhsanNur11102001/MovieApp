@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Mans Catalog</string>
+    <string name="sedang_tayang">Sedang Tayang</string>
+    <string name="film_rekomendasi">Film rekomendasi</string>
+    <string name="sedang_tayan">Sedang tayang</string>
+    <string name="trailer">Trailer</string>
+    <string name="acara_tv">Acara TV</string>
+    <string name="my_movie">My Movie</string>
+    <string name="man_s_catalog">Mans Catalog</string>
+    <string name="setelan_notifikasi">Setelan notifikasi</string>
+    <string name="notifkasi">Notifkasi</string>
+    <string name="film_favorite">Film favorite</string>
+</resources>
