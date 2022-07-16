@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/biru_tua"
+    tools:context=".activity.HomeActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <com.github.florent37.diagonallayout.DiagonalLayout
+        android:id="@+id/diagonal_item"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"/>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+        <com.gauravk.bubblenavigation.BubbleNavigationLinearView
+            android:id="@+id/buble_navigasi"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/custom_buble"
+            android:layout_marginStart="15dp"
+            android:layout_width="match_parent"
+            android:padding="5dp"
+            android:layout_height="50dp">
+
+            <com.gauravk.bubblenavigation.BubbleToggleView
+                android:id="@+id/bt_movie"
+                android:layout_weight="1"
+                app:bt_icon="@drawable/ic_movie"
+                android:layout_width="match_parent"
+                app:bt_shape="@drawable/bt_shape_film"
+                app:bt_colorActive="@color/merah"
+                app:bt_title="Movie"
+                android:layout_height="wrap_content"/>
+            <com.gauravk.bubblenavigation.BubbleToggleView
+                android:id="@+id/bt_tvshow"
+                app:bt_icon="@drawable/ic_tv"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                app:bt_shape="@drawable/bt_shape_tv"
+                app:bt_colorActive="@color/kuning"
+                app:bt_title="Tv"
+                android:layout_height="wrap_content"/>
+            <com.gauravk.bubblenavigation.BubbleToggleView
+                android:id="@+id/bt_search"
+                android:layout_weight="1"
+                app:bt_title="Search"
+                app:bt_icon="@drawable/ic_search"
+                android:layout_width="match_parent"
+                app:bt_shape="@drawable/bt_shape_search"
+                app:bt_colorActive="@color/hijau"
+                android:layout_height="wrap_content"/>
+
+        </com.gauravk.bubblenavigation.BubbleNavigationLinearView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>

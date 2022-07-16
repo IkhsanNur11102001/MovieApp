@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="hijau">#00D104</color>
-    <color name="hitam_cerah">#222222</color>
+    <color name="biru_tua">#23283E</color>
+    <color name="abu">#3A3A3A</color>
     <color name="hitam">#FF000000</color>
-    <color name="white">#FFFFFF</color>
+    <color name="putih">#FFFFFF</color>
     <color name="kuning">#FFFA00</color>
     <color name="merah">#FF3B3B</color>
+    <color name="hijau">#10EC00</color>
 </resources>
