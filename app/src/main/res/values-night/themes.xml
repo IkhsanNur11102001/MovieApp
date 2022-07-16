@@ -6,7 +6,7 @@
         <item name="colorPrimaryVariant">@color/biru_tua</item>
         <item name="colorOnPrimary">@color/abu</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/hitam</item>
+        <item name="colorSecondary">@color/putih</item>
         <item name="colorSecondaryVariant">@color/merah</item>
         <item name="colorOnSecondary">@color/kuning</item>
         <!-- Status bar color. -->
